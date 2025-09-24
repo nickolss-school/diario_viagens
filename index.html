@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meu Diário de Viagens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <header
+      class="bg-blue-600 text-white p-4 shadow-md flex justify-between items-center"
+    >
+      <h1 class="text-3xl font-bold">🗺️ Meu Diário de Viagens</h1>
+      <button
+        id="btnCitar"
+        class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+      >
+        Citação do Dia
+      </button>
+    </header>
+
+    <main class="container mx-auto p-4 flex flex-col md:flex-row gap-8 mt-4">
+      <div
+        id="citacaoContainer"
+        class="hidden md:col-span-2 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4"
+        role="alert"
+      >
+        <p class="font-bold">Citação do Dia:</p>
+        <p id="citacaoTexto" class="italic"></p>
+        <p id="citacaoAutor" class="text-sm text-right mt-2"></p>
+      </div>
+
+      <aside class="md:w-1/3 bg-white p-6 rounded-lg shadow-md h-fit">
+        <h2 class="text-2xl font-semibold mb-4 text-blue-700">
+          Adicionar Nova Memória
+        </h2>
+        <form id="formDiario" class="space-y-4">
+          <div>
+            <label
+              for="titulo"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Título do Local:</label
+            >
+            <input
+              type="text"
+              id="titulo"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div>
+            <label
+              for="dataVisita"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Data da Visita:</label
+            >
+            <input
+              type="date"
+              id="dataVisita"
+              required
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div>
+            <label
+              for="fotoUrl"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Link para uma Foto (opcional):</label
+            >
+            <input
+              type="url"
+              id="fotoUrl"
+              placeholder="https://exemplo.com/foto.jpg"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div>
+            <label
+              for="descricao"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Descrição da Experiência:</label
+            >
+            <textarea
+              id="descricao"
+              required
+              minlength="15"
+              rows="4"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            ></textarea>
+          </div>
+          <div>
+            <label
+              for="avaliacao"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Avaliação (1 a 5):
+              <span id="avaliacaoValor" class="font-normal text-blue-500"
+                >3</span
+              ></label
+            >
+            <input
+              type="range"
+              id="avaliacao"
+              min="1"
+              max="5"
+              value="3"
+              class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg"
+            />
+          </div>
+          <div class="flex items-center space-x-2">
+            <button
+              type="button"
+              id="btnAdicionarLocalizacao"
+              class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300"
+            >
+              Adicionar Localização
+            </button>
+            <span id="localizacaoStatus" class="text-sm text-gray-600"></span>
+            <input type="hidden" id="latitude" />
+            <input type="hidden" id="longitude" />
+          </div>
+          <button
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full transition duration-300"
+          >
+            Salvar Memória
+          </button>
+        </form>
+      </aside>
+
+      <section id="entradas" class="md:w-2/3 space-y-6">
+        <h2 class="text-2xl font-semibold mb-4 text-blue-700">
+          Minhas Memórias de Viagem
+        </h2>
+        <!-- As entradas do diário serão carregadas aqui pelo JavaScript -->
+        <p id="noEntriesMessage" class="text-gray-500 italic">
+          Nenhuma memória adicionada ainda. Adicione uma usando o formulário ao
+          lado!
+        </p>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white p-4 text-center mt-8">
+      <p>&copy; 2023 Nickolas Maia de Araujo - Diário de Viagens</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
